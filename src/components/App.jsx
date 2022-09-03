@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
-import { Phonebook } from './Phonebook/Phonebook';
+
 import { ContactList } from './ContactList/ContactList';
 
 import { Title } from './Title/Title';
