@@ -59,16 +59,13 @@ export class App extends Component {
     );
     return (
       <>
-        <Title title="Phonebook"></Title>
+        <Title title="Phonebook" />
         <ContactForm onSubmit={this.addContact} />
 
-        <Title title="Contacts"></Title>
-        <Filter filter={filter} changeFilter={this.changeFilter}></Filter>
+        <Title title="Contacts" />
+        <Filter filter={filter} changeFilter={this.changeFilter} />
 
-        <ContactList
-          contacts={filterContacts}
-          onClick={this.deleteContact}
-        ></ContactList>
+        <ContactList contacts={filterContacts} onClick={this.deleteContact} />
       </>
     );
   }
