@@ -57,11 +57,11 @@ export const App = () => {
     setFilter(e.currentTarget.value);
   };
   console.log(contacts);
-  // const normalizedFilter = filter.toLowerCase();
+  const normalizedFilter = filter.toLowerCase();
 
-  // const filterContacts = contacts.filter(contact =>
-  //   contact.name.toLowerCase().includes(normalizedFilter)
-  // );
+  const filterContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(normalizedFilter)
+  );
 
   return (
     <>
@@ -71,7 +71,7 @@ export const App = () => {
       <Title title="Contacts" />
       <Filter filter={filter} changeFilter={changeFilter} />
 
-      <ContactList contacts={contacts} onClick={deleteContact} />
+      <ContactList contacts={filterContacts} onClick={deleteContact} />
     </>
   );
 };
