@@ -13,6 +13,7 @@ export const ContactForm = ({ onSubmit }) => {
         break;
       case 'number':
         setNumber(e.currentTarget.value);
+        break;
       default:
         return;
     }
