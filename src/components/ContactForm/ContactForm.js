@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { getContacts } from '../../redux/selectors';
 import { Form, Label, Input, Button } from './ContactForm.styled';
+import { addContacts } from 'redux/contactsSlicer';
 
-export const ContactForm = ({ onSubmit }) => {
+export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const dispatch = useDispatch();
+  const contacts = useSelector(getContacts);
 
   const handleChange = e => {
     switch (e.currentTarget.name) {
@@ -26,8 +31,15 @@ export const ContactForm = ({ onSubmit }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const data = { name, number };
-    onSubmit(data);
+    if (
+      contacts.find(contact => {
+        return contact.name === name;
+      })
+    ) {
+      alert(`${name} is already in contacts`);
+      return;
+    }
+    dispatch(addContacts({ name, number }));
     reset();
   };
 
