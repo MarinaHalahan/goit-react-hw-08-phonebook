@@ -1,40 +1,30 @@
-import { ContactList } from './ContactList/ContactList';
-import { Filter } from './Filter/Filter';
-import { Title } from './Title/Title';
-import { ContactForm } from './ContactForm/ContactForm';
-import { useDispatch, useSelector } from 'react-redux';
+import { Routes, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchContacts } from '../redux/operations';
-import { selectLoading, selectError } from '../redux/selectors';
-import { RotatingLines } from 'react-loader-spinner';
-import Loader from './App.styled';
+import Contacts from 'pages/Contacts/Contacts';
+import Registration from '../pages/Registration/Registration';
+import Auth from '../pages/Authorization/Authorization';
+import AppBar from '../components/AppBar/AppBar';
+import { authOperations } from '../redux/auth';
+// import NotFound from '../pages/NotFound';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectLoading);
-  const error = useSelector(selectError);
+
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(authOperations.refreshCurrentUser());
   }, [dispatch]);
   return (
-    <>
-      <Title title="Phonebook" />
-      <ContactForm />
-      <Title title="Contacts" />
-      {isLoading && (
-        <Loader>
-          <RotatingLines
-            strokeColor="grey"
-            strokeWidth="5"
-            animationDuration="0.75"
-            width="50"
-            visible={true}
-          />
-        </Loader>
-      )}
-      {error && <p>{error}</p>}
-      <Filter />
-      <ContactList />
-    </>
+    <div>
+      <AppBar />
+
+      <Routes>
+        <Route path="/contacts" element={<Contacts />} />
+        <Route path="/register" element={<Registration />} />
+        <Route path="/login" element={<Auth />} />
+
+        {/* <Route path="*" element={<NotFound />} /> */}
+      </Routes>
+    </div>
   );
 };

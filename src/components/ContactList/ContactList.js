@@ -8,13 +8,14 @@ import { deleteContacts } from '../../redux/operations';
 export const ContactList = () => {
   const dispatch = useDispatch();
   const filterContacts = useSelector(selectFilterContacts);
+  console.log(filterContacts);
 
   return (
     <ListWrap>
-      {filterContacts.map(({ id, name, phone }) => (
+      {filterContacts.map(({ id, name, number }) => (
         <ListItem key={id}>
           <span className="nameContacts">{name.toLowerCase()}</span>:{' '}
-          <span>{phone}</span>
+          <span>{number}</span>
           <Button onClick={() => dispatch(deleteContacts(id))}>Delete</Button>
         </ListItem>
       ))}
