@@ -40,8 +40,9 @@ export const contactsSlice = createSlice({
     [deleteContacts.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
+      console.log(state);
       const index = state.contacts.findIndex(
-        contact => contact.id === action.payload.id
+        contact => contact.id === action.payload
       );
       console.log(index);
       state.contacts.splice(index, 1);
@@ -52,26 +53,6 @@ export const contactsSlice = createSlice({
       state.error = action.payload;
     },
   },
-  // extraReducers: {
-  //   addContacts: {
-  //     reducer(state, action) {
-  //       console.log(state.contacts);
-  //       state.push(action.payload);
-  //     },
-  //     prepare({ name, number }) {
-  //       return {
-  //         payload: {
-  //           name,
-  //           number,
-  //         },
-  //       };
-  //     },
-  //   },
-  //   deleteContacts(state, action) {
-  //     return state.filter(contact => contact.id !== action.payload);
-  //   },
-  // },
 });
 
-// export const { addContacts, deleteContacts } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;

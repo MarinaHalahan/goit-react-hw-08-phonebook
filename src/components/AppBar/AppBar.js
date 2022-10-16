@@ -3,7 +3,7 @@ import { AuthNav } from '../AuthNav/AuthNav';
 import { authSelectors } from '../../redux/auth';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import ContactsMenu from '../ContactsMenu/ContactsMenu';
+import UserMenu from '../UserMenu/UserMenu';
 
 const AppBar = () => {
   const isLoggedIn = useSelector(authSelectors.selectIsLoggedIn);
@@ -11,8 +11,9 @@ const AppBar = () => {
   return (
     <Header>
       <Navigation>
-        <Link to="/contacts">Contacts</Link>
-        {isLoggedIn ? <ContactsMenu /> : <AuthNav />}
+        {isLoggedIn && <Link to="/contacts"></Link>}
+
+        {isLoggedIn ? <UserMenu /> : <AuthNav />}
       </Navigation>
     </Header>
   );
