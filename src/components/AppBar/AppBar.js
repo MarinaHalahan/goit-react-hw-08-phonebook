@@ -12,7 +12,6 @@ const AppBar = () => {
     <Header>
       <Navigation>
         {isLoggedIn && <Link to="/contacts"></Link>}
-
         {isLoggedIn ? <UserMenu /> : <AuthNav />}
       </Navigation>
     </Header>

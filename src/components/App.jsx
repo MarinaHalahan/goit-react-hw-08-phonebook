@@ -6,6 +6,7 @@ import Contacts from 'pages/Contacts/Contacts';
 import Registration from '../pages/Registration/Registration';
 import Auth from '../pages/Authorization/Authorization';
 import AppBar from '../components/AppBar/AppBar';
+import Home from '../pages/Home';
 import { authOperations } from '../redux/auth';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
@@ -23,6 +24,7 @@ export const App = () => {
 
       {!isRefreshing && (
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route
             path="/contacts"
             element={
