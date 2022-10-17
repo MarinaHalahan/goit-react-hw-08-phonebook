@@ -40,13 +40,12 @@ export const contactsSlice = createSlice({
     [deleteContacts.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      console.log(state);
+
       const index = state.contacts.findIndex(
-        contact => contact.id === action.payload
+        contact => contact.id === action.meta.arg
       );
-      console.log(index);
+
       state.contacts.splice(index, 1);
-      console.log(state);
     },
     [deleteContacts.rejected](state, action) {
       state.isLoading = false;
