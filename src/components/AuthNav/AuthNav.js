@@ -1,11 +1,10 @@
 import { AuthBox } from './AuthNav.styled';
-import { Link } from 'react-router-dom';
-
+import { LoginLink, SignupLink } from './AuthNav.styled';
 export const AuthNav = () => {
   return (
     <AuthBox>
-      <Link to="/login">Log In</Link>
-      <Link to="/register">Sign Up</Link>
+      <LoginLink to="/login">Log In</LoginLink>
+      <SignupLink to="/register">Sign Up</SignupLink>
     </AuthBox>
   );
 };
